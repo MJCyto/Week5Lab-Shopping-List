@@ -16,28 +16,35 @@
         <h1>Shopping List</h1>
 
         Hello, ${user}
-        <a href="<c:url value='ShoppingList?logout'></c:url>">Logout</a>
+        <a href="<c:url value='/ShoppingList'>
+               <c:param name='action' value='logout'></c:param>
+            </c:url>">Logout</a>
 
         <h2>List</h2>
 
-        <form>
+        <form action="ShoppingList" method="post">
             Add item: <input type="text" name="itemName">
             <input type="hidden" name="action" value="add">
             <input type="submit" value="Add">
         </form>
         
-        <table>
+        <form action="ShoppingList" method="post">
+           <table>
             <c:forEach items="${list}" var="item">
                 <tr>
                     <td><input type="radio" name="listItem" value="${item}"></td>
                     <td>${item}</td>
                 </tr>
             </c:forEach>
-        </table>
+            </table> 
+            <input type="hidden" name="action" value="delete">
+            <input type="submit" value="Delete">
+        </form>
+        
         
         <!--<form>-->
 
-            <!--<input type="submit" value="Delete">-->
+            <!---->
         <!--</form>-->
 
 
