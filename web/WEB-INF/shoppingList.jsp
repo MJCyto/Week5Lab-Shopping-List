@@ -10,25 +10,36 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Shopping List</title>
     </head>
     <body>
         <h1>Shopping List</h1>
 
-        Hello, ${user.getName}
-        <a href="ShoppingList?logout">Logout</a>
+        Hello, ${user}
+        <a href="<c:url value='ShoppingList?logout'></c:url>">Logout</a>
 
         <h2>List</h2>
 
         <form>
             Add item: <input type="text" name="itemName">
+            <input type="hidden" name="action" value="add">
             <input type="submit" value="Add">
-            <c:forEach var="item" items="${list.items}">
-                <input type="radio" name="listItem" value="${item.name}">
-                <label for="${item.name}">${item.name}</label>
-            </c:forEach>
-                
-                <input type="submit" value="Delete">
         </form>
+        
+        <table>
+            <c:forEach items="${list}" var="item">
+                <tr>
+                    <td><input type="radio" name="listItem" value="${item}"></td>
+                    <td>${item}</td>
+                </tr>
+            </c:forEach>
+        </table>
+        
+        <!--<form>-->
+
+            <!--<input type="submit" value="Delete">-->
+        <!--</form>-->
+
+
     </body>
 </html>
